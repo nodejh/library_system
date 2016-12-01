@@ -9,26 +9,18 @@ const publicDir = './static';
 
 const server = http.createServer((req, res) => {
   const method = req.method;
-  const pathname = url.parse(req.url).pathname
   console.log('method: ', method);
-  console.log('pathname: ', pathname);
-  // pathname 为 / 则返回 index.html
-  // pathname 后缀是 .html/.css/.js 则返回文件
-  const regexp = /(\/)|(\.html|\.css|\.js)$/;
-  if (regexp.test(pathname)) {
-    
+  let data = '';
+  switch (method) {
+    case 'GET':
+      handleGet(req, res);
+      break;
+    case 'POST':
+      handlePost(req, res);
+      break;
+    default:
+      handlePost(req, res);
   }
-  // let data = '';
-  // switch (method) {
-  //   case 'GET':
-  //     handleGet(req, res);
-  //     break;
-  //   case 'POST':
-  //     handlePost(req, res);
-  //     break;
-  //   default:
-  //     handlePost(req, res);
-  // }
 });
 
 server.listen(port, () => {
