@@ -42,16 +42,15 @@ app.route('/findOverdue', 'post', function*(req, res) {
       '</tr>';
     lendList.map((item) => {
       console.log('item: ', item);
-      const showReturnTime = time.timestampToNextMonthDate(item.lendDate);
       let isOverdue = '否';
-      if (new Date().getTime() > new Date(showReturnTime).getTime()) {
+      if (new Date().getTime() > item.showReturnTime) {
         isOverdue = '是';
       }
       html += '<tr>' +
         `<td>${item.bID}</td>` +
         `<td>${item.bName}</td>` +
         `<td>${time.timestampToDate(item.lendDate)}</td>` +
-        `<td>${showReturnTime}</td>` +
+        `<td>${time.timestampToDate(item.shouldReturnDate)}</td>` +
         `<td>${isOverdue}</td>` +
       '</tr>';
     });

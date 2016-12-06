@@ -40,7 +40,7 @@ app.route('/lendBook','post', function*(req, res) {
     'where shouldReturnDate < ? ' +
     'and isReturn = 0 ' +
     'and rID = ?';
-    
+
   try {
     const showReturnList = yield db.execSQL(findShouldReturn, [now, rID]);
     if (showReturnList.length > 0) {
@@ -53,9 +53,9 @@ app.route('/lendBook','post', function*(req, res) {
   }
 
   // 查询是否已经借阅该书
-  const findLendBook = 'select bID from lend where bID=? and rID=?';
+  const findLendBook = 'select bID from lend where bID=? and rID=? and isReturn=0';
   try {
-    const lendBook = yield db.execSQL(findShouldReturn, [now, rID]);
+    const lendBook = yield db.execSQL(findShouldReturn, [bID, rID]);
     if (lendBook.length > 0) {
       console.log('该读者已经借阅该书，且未归还');
       return getHtml("<div id='result' style='display:none'>4</div>该读者已经借阅该书，且未归还");
@@ -80,7 +80,7 @@ app.route('/lendBook','post', function*(req, res) {
   }
 
   // 更新books表
-  const updateBook = 'update book set bCntLeft=bCntLeft-1 where bID=?';
+  const updateBook = 'update books set bCntLeft=bCntLeft-1 where bID=?';
   try {
     const updateRes = yield db.execSQL(updateBook, [bID]);
     console.log('更新books表：', updateRes);

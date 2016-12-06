@@ -41,4 +41,5 @@ function timestampToNextMonthDate(timestamp) {
 module.exports = {
   timestampToDate,
   timestampToDatetime,
+  timestampToNextMonthDate,
 };
