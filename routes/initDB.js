@@ -30,6 +30,7 @@ app.route('/initDB', 'post', function * (req, res) {
   'bID text, ' +
   'rID text, ' +
   'lendDate integer, ' +
+  'shouldReturnDate integer, ' +
   'returnDate integer, ' +
   'isReturn integer ' +
   ' ); ';

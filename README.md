@@ -1,1 +1,3 @@
-## 数据库课程设计
+## Library System
+
+A Simple Library System.

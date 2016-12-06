@@ -46,6 +46,7 @@ require('./routes/deleteReader');
 require('./routes/updateReader');
 require('./routes/findReader');
 require('./routes/findOverdue');
+require('./routes/lendBook');
 
 
 app.use(app.router);//use router
