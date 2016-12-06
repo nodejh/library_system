@@ -40,14 +40,14 @@ app.route('/findReader', 'post', function*(req, res) {
   try {
     console.log('sql: ', sql);
     const readers = yield db.execSQL(sql);
-    let html = '<table border=1 id=\'result\'>' +
-      '<tr>' +
-      '<td>证号</td>' +
-      '<td>姓名</td>' +
-      '<td>性别</td>' +
-      '<td>系名</td>' +
-      '<td>年级</td>' +
-      '</tr>';
+    let html = '<table border=1 id=\'result\'>';
+      // '<tr>' +
+      // '<td>证号</td>' +
+      // '<td>姓名</td>' +
+      // '<td>性别</td>' +
+      // '<td>系名</td>' +
+      // '<td>年级</td>' +
+      // '</tr>';
     readers.map((item) => {
       console.log('item: ', item);
       html += '<tr>' +

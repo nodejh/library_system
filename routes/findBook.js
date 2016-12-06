@@ -33,10 +33,10 @@ app.route('/findBook', 'post', function*(req, res) {
   if (bMem) {
     sql += `bMem like '%${bMem}%' and `;
   }
-  if (bDate0) {
+  if (bDate0 && /^\d{4}-\d{2}-\d{2}$/.test(bDate0)) {
     sql += `bDate >= ${new Date(bDate0).getTime()} and `;
   }
-  if (bDate1) {
+  if (bDate1 && /^\d{4}-\d{2}-\d{2}$/.test(bDate1)) {
     sql += `bDate <= ${new Date(bDate1).getTime()} and `;
   }
   // 添加一个永远为真的条件，以便拼接完整个 SQL

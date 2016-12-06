@@ -70,7 +70,7 @@ app.route('/lendBook','post', function*(req, res) {
     'values(?, ?, ?, ?, ?, ?)';
   try {
     const lendDate = new Date().getTime();
-    const shouldReturnDate = time.timestampToNextMonthDate(lendDate);
+    const shouldReturnDate = new Date(time.timestampToNextMonthDate(lendDate)).getTime();
     const params = [rID, bID, lendDate, shouldReturnDate, null, 0];
     const insertRes = yield db.execSQL(insertLend, params);
     console.log('将借阅信息写入到 lend 表：', insertRes);
