@@ -1,3 +1,4 @@
+'use strict';
 // 增加书籍数量
 const app=require('../WebApp');
 const getHtml = require('./getHtml');

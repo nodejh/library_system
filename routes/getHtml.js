@@ -1,3 +1,4 @@
+'use strict';
 const HTM=require('../lib').html;
 
 function getHtml(content) {

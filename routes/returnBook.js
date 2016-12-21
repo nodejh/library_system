@@ -1,3 +1,4 @@
+'use strict';
 // 还书
 const app=require('../WebApp');
 const getHtml = require('./getHtml');

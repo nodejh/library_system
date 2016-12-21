@@ -1,3 +1,4 @@
+'use strict';
 // 删除/减少书籍
 const app=require('../WebApp');
 const getHtml = require('./getHtml');

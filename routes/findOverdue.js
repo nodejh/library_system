@@ -1,3 +1,4 @@
+'use strict';
 // 查询某个读者的未归还信息
 const app=require('../WebApp');
 const getHtml = require('./getHtml');

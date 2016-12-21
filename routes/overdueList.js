@@ -1,3 +1,4 @@
+'use strict';
 // 超期未还读者列表
 const app=require('../WebApp');
 const getHtml = require('./getHtml');

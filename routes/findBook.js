@@ -1,3 +1,4 @@
+'use strict';
 // 查询书籍
 const app=require('../WebApp');
 const getHtml = require('./getHtml');
@@ -41,20 +42,21 @@ app.route('/findBook', 'post', function*(req, res) {
   }
   // 添加一个永远为真的条件，以便拼接完整个 SQL
   sql += ' 1';
+  console.log('sql: ', sql);
   try {
     console.log('sql: ', sql);
     const books = yield db.execSQL(sql);
-    let html = '<table border=1 id=\'result\'>' +
-      '<tr>' +
-      '<td>书号</td>' +
-      '<td>书名</td>' +
-      '<td>总数量</td>' +
-      '<td>在库数量</td>' +
-      '<td>出版社</td>' +
-      '<td>出版日期</td>' +
-      '<td>作者</td>' +
-      '<td>内容摘要</td>' +
-      '</tr>';
+    let html = '<table border=1 id=\'result\'>';
+      // '<tr>' +
+      // '<td>书号</td>' +
+      // '<td>书名</td>' +
+      // '<td>总数量</td>' +
+      // '<td>在库数量</td>' +
+      // '<td>出版社</td>' +
+      // '<td>出版日期</td>' +
+      // '<td>作者</td>' +
+      // '<td>内容摘要</td>' +
+      // '</tr>';
     books.map((item) => {
       console.log('item: ', item);
       html += '<tr>' +

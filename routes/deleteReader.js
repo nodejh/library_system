@@ -1,3 +1,4 @@
+'use strict';
 // 删除读者
 const app=require('../WebApp');
 const getHtml = require('./getHtml');

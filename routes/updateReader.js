@@ -1,3 +1,4 @@
+'use strict';
 // 修改读者信息
 const app=require('../WebApp');
 const getHtml = require('./getHtml');

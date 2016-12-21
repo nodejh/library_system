@@ -1,3 +1,4 @@
+'use strict';
 // 借书
 const app=require('../WebApp');
 const getHtml = require('./getHtml');
@@ -23,11 +24,14 @@ app.route('/lendBook','post', function*(req, res) {
   }
 
   // 查找书号
-  const findBook = 'select bID from books where bID=?';
+  const findBook = 'select bID,bCntLeft from books where bID=?';
   try {
     const books = yield db.execSQL(findBook, [bID]);
+    console.log('books: ', books);
     if (books.length === 0) {
       return getHtml("<div id='result' style='display:none'>2</div>该书号不存在");
+    } else if (!(books[0].bCntLeft > 0 )) {
+      return getHtml("<div id='result' style='display:none'>5</div>该书已经全部借出");
     }
   } catch (e) {
     console.log('查找书号出错，借书失败：', e);
@@ -53,9 +57,12 @@ app.route('/lendBook','post', function*(req, res) {
   }
 
   // 查询是否已经借阅该书
-  const findLendBook = 'select bID from lend where bID=? and rID=? and isReturn=0';
+  const findLendBook = 'select bID,rID from lend where bID=? and rID=? and isReturn=0';
   try {
-    const lendBook = yield db.execSQL(findShouldReturn, [bID, rID]);
+    console.log('bID: ', bID);
+    console.log('rID: ', rID);
+    const lendBook = yield db.execSQL(findLendBook, [bID, rID]);
+    console.log('lendBook: ', lendBook);
     if (lendBook.length > 0) {
       console.log('该读者已经借阅该书，且未归还');
       return getHtml("<div id='result' style='display:none'>4</div>该读者已经借阅该书，且未归还");

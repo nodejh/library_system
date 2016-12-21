@@ -1,3 +1,4 @@
+'use strict';
 function timestampToDate(timestamp) {
   var date = new Date(timestamp);
   var hours = date.getHours();

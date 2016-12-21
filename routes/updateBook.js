@@ -1,3 +1,4 @@
+'use strict';
 // 修改书籍信息
 const app=require('../WebApp');
 const getHtml = require('./getHtml');

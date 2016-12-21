@@ -1,3 +1,4 @@
+'use strict';
 // 数据库初始化
 const app = require('../WebApp');
 const db = require("../coSqlite3");
